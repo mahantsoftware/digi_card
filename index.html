@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Mahant Software - Smart Digital Business Card</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Mahant Software - Smart Digital Business Card">
+  <meta name="description" content="Official Smart Digital Business Card of Mahant Software. Connect via WhatsApp, Call, Email, view services, portfolio and save contact with 1-click.">
+  <meta name="theme-color" content="#0d1b2a">
+  
+  <!-- Open Graph / Facebook / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://card.mahantsoftware.com">
+  <meta property="og:title" content="Mahant Software - Digital Business Card">
+  <meta property="og:description" content="Tap here to view services, connect on WhatsApp, and save contact in 1-click.">
+  <meta property="og:image" content="assets/logo.png">
+
+  <!-- Apple & PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mahant Software">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <!-- QR Code Generator Library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Ambience -->
+  <div class="bg-mesh"></div>
+
+  <!-- App Wrapper / Phone Simulation for Desktop -->
+  <div class="app-viewport">
+    
+    <!-- Top Action Nav -->
+    <header class="card-header">
+      <div class="header-banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-pattern"></div>
+        <!-- Quick Share icon top-right -->
+        <button class="icon-circle-btn share-top-btn" id="headerShareBtn" title="Share Card">
+          <i class="ri-share-forward-line"></i>
+        </button>
+      </div>
+
+      <!-- Profile Section -->
+      <div class="profile-section">
+        <div class="avatar-wrapper">
+          <img src="assets/logo.png" alt="Mahant Software Logo" class="profile-avatar" id="profileAvatar" onerror="this.src='assets/default_avatar.svg'">
+          <span class="verified-badge" title="Verified Business"><i class="ri-verified-badge-fill"></i></span>
+        </div>
+
+        <h1 class="profile-name" id="profileName">Mahant Software</h1>
+        <p class="profile-owner" id="profileOwner">Tech Solutions & Business Automation</p>
+        <p class="profile-tagline" id="profileTagline">Custom Software, Mobile Apps & Digital Solutions</p>
+
+        <!-- Rating & Trust Badge -->
+        <div class="trust-badge">
+          <div class="stars">
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+          </div>
+          <span class="rating-text"><strong>5.0</strong> (48+ Verified Reviews)</span>
+        </div>
+
+        <!-- Quick Connect Icon Grid -->
+        <div class="quick-connect-grid">
+          <a href="tel:+919876543210" class="connect-action-btn call" id="btnCall" title="Call Us">
+            <div class="icon-box"><i class="ri-phone-fill"></i></div>
+            <span>Call</span>
+          </a>
+          <a href="https://wa.me/919876543210?text=Hello%20Mahant%20Software,%20I%20saw%20your%20Digital%20Card%20and%20want%20to%20inquire." target="_blank" class="connect-action-btn whatsapp" id="btnWhatsapp" title="WhatsApp">
+            <div class="icon-box"><i class="ri-whatsapp-fill"></i></div>
+            <span>WhatsApp</span>
+          </a>
+          <a href="mailto:contact@mahantsoftware.com" class="connect-action-btn email" id="btnEmail" title="Email">
+            <div class="icon-box"><i class="ri-mail-fill"></i></div>
+            <span>Email</span>
+          </a>
+          <a href="https://maps.google.com/?q=Mahant+Software+Gujarat" target="_blank" class="connect-action-btn location" id="btnLocation" title="Location">
+            <div class="icon-box"><i class="ri-map-pin-2-fill"></i></div>
+            <span>Directions</span>
+          </a>
+          <a href="https://mahantsoftware.com" target="_blank" class="connect-action-btn website" id="btnWebsite" title="Website">
+            <div class="icon-box"><i class="ri-global-line"></i></div>
+            <span>Website</span>
+          </a>
+        </div>
+
+        <!-- Big Primary CTA: Add to Phonebook -->
+        <button class="btn-primary-vcard" id="btnDownloadVcard">
+          <i class="ri-user-add-line"></i>
+          <span>Add to Phonebook</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="card-tabs" id="cardTabs">
+      <button class="tab-btn active" data-tab="share-details">
+        <i class="ri-qr-code-line"></i>
+        <span>Share</span>
+      </button>
+      <button class="tab-btn" data-tab="about">
+        <i class="ri-information-line"></i>
+        <span>About</span>
+      </button>
+      <button class="tab-btn" data-tab="social">
+        <i class="ri-share-line"></i>
+        <span>Social</span>
+      </button>
+      <button class="tab-btn" data-tab="gallery">
+        <i class="ri-gallery-line"></i>
+        <span>Portfolio</span>
+      </button>
+      <button class="tab-btn" data-tab="testimonials">
+        <i class="ri-chat-smile-2-line"></i>
+        <span>Reviews</span>
+      </button>
+    </nav>
+
+    <!-- Tab Content Panels -->
+    <main class="tabs-container">
+      
+      <!-- TAB 1: SHARE DETAILS (QR & WHATSAPP SHARING) -->
+      <section class="tab-panel active" id="tab-share-details">
+        <div class="qr-showcase-card">
+          <div class="qr-header">
+            <span class="qr-tag"><i class="ri-scan-2-line"></i> Scan to Save or Visit</span>
+            <h3>Digital Visiting Card QR</h3>
+            <p>Scan this QR code with any smartphone camera to open and save this digital card.</p>
+          </div>
+
+          <!-- Dynamic QR Canvas Container -->
+          <div class="qr-box">
+            <div id="qrCanvasContainer">
+              <img src="assets/mahant_software_qr.png" alt="Mahant Software QR Code" id="mainQrImage" class="qr-display-img">
+            </div>
+            <div class="qr-badge">
+              <i class="ri-smartphone-line"></i> Works on iOS & Android
+            </div>
+          </div>
+
+          <!-- QR Actions -->
+          <div class="qr-actions">
+            <a href="assets/mahant_software_qr.png" download="Mahant_Software_QR.png" class="btn-secondary-action" id="btnDownloadQr">
+              <i class="ri-download-2-line"></i>
+              <span>Download QR</span>
+            </a>
+            <button class="btn-secondary-action" id="btnCopyCardLink">
+              <i class="ri-file-copy-line"></i>
+              <span>Copy Card Link</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Direct WhatsApp Sender Box -->
+        <div class="whatsapp-share-card">
+          <div class="ws-header">
+            <i class="ri-whatsapp-fill ws-icon"></i>
+            <div>
+              <h4>Share Card via WhatsApp</h4>
+              <p>Send this card directly to any mobile number</p>
+            </div>
+          </div>
+          <form class="ws-form" id="whatsappShareForm">
+            <div class="input-with-country">
+              <span class="country-code">+91</span>
+              <input type="tel" id="targetWhatsAppNumber" placeholder="Enter 10-digit number" pattern="[0-9]{10}" required maxlength="10">
+            </div>
+            <button type="submit" class="btn-send-whatsapp">
+              <i class="ri-send-plane-fill"></i> Send on WhatsApp
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- TAB 2: ABOUT US & SERVICES -->
+      <section class="tab-panel" id="tab-about">
+        <div class="info-block">
+          <div class="block-title">
+            <i class="ri-building-line"></i>
+            <h3>About Mahant Software</h3>
+          </div>
+          <p class="about-text" id="aboutBio">
+            Mahant Software is a premier technology & digital development agency. We empower businesses with modern websites, custom mobile applications, enterprise automation, and smart digital identity solutions.
+          </p>
+        </div>
+
+        <!-- Services Section -->
+        <div class="info-block">
+          <div class="block-title">
+            <i class="ri-apps-2-line"></i>
+            <h3>Our Services & Solutions</h3>
+          </div>
+          <div class="services-list" id="servicesList">
+            <!-- Injected by app.js -->
+          </div>
+        </div>
+
+        <!-- Business Details Info Table -->
+        <div class="info-block">
+          <div class="block-title">
+            <i class="ri-profile-line"></i>
+            <h3>Business Information</h3>
+          </div>
+          <div class="detail-rows">
+            <div class="detail-row">
+              <span class="row-label"><i class="ri-time-line"></i> Working Hours:</span>
+              <span class="row-value">Mon - Sat: 9:30 AM - 7:30 PM</span>
+            </div>
+            <div class="detail-row">
+              <span class="row-label"><i class="ri-map-pin-line"></i> Operating Region:</span>
+              <span class="row-value">Gujarat, India (Serving Worldwide)</span>
+            </div>
+            <div class="detail-row">
+              <span class="row-label"><i class="ri-shield-check-line"></i> Service Model:</span>
+              <span class="row-value">Custom IT, Web & App Consulting</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: SOCIAL MEDIA LINKS -->
+      <section class="tab-panel" id="tab-social">
+        <div class="social-panel-header">
+          <h3>Connect with us Online</h3>
+          <p>Follow our official channels for project updates and tech insights.</p>
+        </div>
+
+        <div class="social-links-grid" id="socialLinksGrid">
+          <a href="https://instagram.com/mahantsoftware" target="_blank" class="social-tile instagram">
+            <div class="social-icon"><i class="ri-instagram-line"></i></div>
+            <div class="social-meta">
+              <span class="platform">Instagram</span>
+              <span class="handle">@mahantsoftware</span>
+            </div>
+            <i class="ri-arrow-right-up-line arrow"></i>
+          </a>
+
+          <a href="https://wa.me/919876543210" target="_blank" class="social-tile whatsapp">
+            <div class="social-icon"><i class="ri-whatsapp-line"></i></div>
+            <div class="social-meta">
+              <span class="platform">WhatsApp Business</span>
+              <span class="handle">Instant Chat & Support</span>
+            </div>
+            <i class="ri-arrow-right-up-line arrow"></i>
+          </a>
+
+          <a href="https://facebook.com/mahantsoftware" target="_blank" class="social-tile facebook">
+            <div class="social-icon"><i class="ri-facebook-circle-line"></i></div>
+            <div class="social-meta">
+              <span class="platform">Facebook</span>
+              <span class="handle">Mahant Software Official</span>
+            </div>
+            <i class="ri-arrow-right-up-line arrow"></i>
+          </a>
+
+          <a href="https://linkedin.com/company/mahantsoftware" target="_blank" class="social-tile linkedin">
+            <div class="social-icon"><i class="ri-linkedin-box-line"></i></div>
+            <div class="social-meta">
+              <span class="platform">LinkedIn</span>
+              <span class="handle">Mahant Software</span>
+            </div>
+            <i class="ri-arrow-right-up-line arrow"></i>
+          </a>
+
+          <a href="https://mahantsoftware.com" target="_blank" class="social-tile website">
+            <div class="social-icon"><i class="ri-global-line"></i></div>
+            <div class="social-meta">
+              <span class="platform">Official Website</span>
+              <span class="handle">mahantsoftware.com</span>
+            </div>
+            <i class="ri-arrow-right-up-line arrow"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- TAB 4: PHOTO GALLERY & PORTFOLIO -->
+      <section class="tab-panel" id="tab-gallery">
+        <div class="gallery-header">
+          <h3>Featured Client Projects</h3>
+          <p>Selected work developed by Mahant Software</p>
+        </div>
+
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- Injected by app.js -->
+        </div>
+      </section>
+
+      <!-- TAB 5: TESTIMONIALS & REVIEWS -->
+      <section class="tab-panel" id="tab-testimonials">
+        <div class="reviews-header">
+          <div class="review-stats">
+            <h2>5.0</h2>
+            <div class="stars">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <span>Based on 48+ Client Reviews</span>
+          </div>
+
+          <button class="btn-write-review" id="btnOpenReviewModal">
+            <i class="ri-edit-2-line"></i> Write a Review
+          </button>
+        </div>
+
+        <div class="reviews-list" id="testimonialsList">
+          <!-- Injected by app.js -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Viral Growth / Agency Lead Magnet Banner -->
+    <div class="viral-agency-banner">
+      <div class="agency-content">
+        <i class="ri-sparkling-fill"></i>
+        <div>
+          <h4>Want a Digital Card like this?</h4>
+          <p>Get your own QR digital card for your business</p>
+        </div>
+      </div>
+      <a href="https://wa.me/919876543210?text=Hello%20Mahant%20Software,%20I%20want%20to%20create%20a%20Digital%20Visiting%20Card%20for%20my%20business.%20Please%20share%20details%20and%20pricing." target="_blank" class="btn-get-card">
+        Create My Card <i class="ri-arrow-right-line"></i>
+      </a>
+    </div>
+
+    <!-- Sticky Bottom Quick Action Bar -->
+    <footer class="bottom-action-bar">
+      <button class="bar-btn secondary" id="bottomShareBtn">
+        <i class="ri-share-forward-line"></i>
+        <span>Share</span>
+      </button>
+      <button class="bar-btn primary" id="bottomSaveBtn">
+        <i class="ri-user-add-line"></i>
+        <span>Save Contact</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Review Modal -->
+  <div class="modal-backdrop" id="reviewModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3>Share Your Feedback</h3>
+        <button class="close-modal" id="closeReviewModal">&times;</button>
+      </div>
+      <form id="reviewForm">
+        <div class="form-group">
+          <label for="reviewName">Your Name</label>
+          <input type="text" id="reviewName" placeholder="e.g. John Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="reviewCompany">Company / Business</label>
+          <input type="text" id="reviewCompany" placeholder="e.g. Acme Corp" required>
+        </div>
+        <div class="form-group">
+          <label>Rating</label>
+          <div class="star-rating-select" id="starRatingSelect">
+            <i class="ri-star-fill active" data-rating="1"></i>
+            <i class="ri-star-fill active" data-rating="2"></i>
+            <i class="ri-star-fill active" data-rating="3"></i>
+            <i class="ri-star-fill active" data-rating="4"></i>
+            <i class="ri-star-fill active" data-rating="5"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="reviewFeedback">Your Review</label>
+          <textarea id="reviewFeedback" rows="3" placeholder="Tell others about your experience working with us..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit-review">Submit Testimonial</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-notice" id="toastNotice">
+    <i class="ri-checkbox-circle-fill"></i>
+    <span id="toastMessage">Action completed</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{
+  "mahant_software": {
+    "slug": "mahant_software",
+    "name": "Mahant Software",
+    "owner": "Business Development & Tech Solutions",
+    "tagline": "Custom Software, Mobile Apps & Digital Solutions",
+    "bio": "Mahant Software is a modern IT development studio specializing in high-performance web applications, mobile apps, digital business cards, and end-to-end automation for growing businesses.",
+    "phone": "+91 98765 43210",
+    "whatsapp": "919876543210",
+    "email": "contact@mahantsoftware.com",
+    "website": "https://mahantsoftware.com",
+    "cardUrl": "https://card.mahantsoftware.com",
+    "location": "Gujarat, India",
+    "rating": 5.0,
+    "reviewCount": 48,
+    "logo": "assets/logo.png",
+    "qrCode": "assets/mahant_software_qr.png",
+    "social": {
+      "whatsapp": "https://wa.me/919876543210?text=Hello%20Mahant%20Software,%20I%20would%20like%20to%20inquire%20about%20your%20services.",
+      "instagram": "https://instagram.com/mahantsoftware",
+      "facebook": "https://facebook.com/mahantsoftware",
+      "linkedin": "https://linkedin.com/company/mahantsoftware",
+      "github": "https://github.com/mahantsoftware",
+      "website": "https://mahantsoftware.com"
+    },
+    "services": [
+      {
+        "title": "Custom Web Applications",
+        "description": "High speed, modern, mobile-responsive web platforms, portals and eCommerce solutions.",
+        "icon": "globe"
+      },
+      {
+        "title": "Mobile App Development",
+        "description": "Cross-platform Android & iOS applications with clean UX, offline sync and cloud integration.",
+        "icon": "smartphone"
+      },
+      {
+        "title": "Digital Visiting Cards & NFC",
+        "description": "Smart paperless business cards with instant WhatsApp contact saving & QR code integration.",
+        "icon": "credit-card"
+      },
+      {
+        "title": "Business Automation & ERP",
+        "description": "Custom billing, inventory, client management and workflow automation software.",
+        "icon": "cpu"
+      },
+      {
+        "title": "SEO & Digital Branding",
+        "description": "Search engine visibility, Google My Business optimization and professional brand identities.",
+        "icon": "trending-up"
+      }
+    ],
+    "portfolio": [
+      {
+        "name": "Ambition Couriers",
+        "category": "Logistics & Tracking System",
+        "image": "assets/project_courier.png"
+      },
+      {
+        "name": "Kalpana's Cakes & Bakes",
+        "category": "Food & Bakery Ordering Web App",
+        "image": "assets/project_cakes.png"
+      },
+      {
+        "name": "Jassi Perfumes",
+        "category": "Luxury E-Commerce Catalog",
+        "image": "assets/project_perfume.png"
+      },
+      {
+        "name": "Makrel Engineering",
+        "category": "Industrial Portfolio & Quotation",
+        "image": "assets/project_industrial.png"
+      }
+    ],
+    "testimonials": [
+      {
+        "author": "Bhavesh Patel",
+        "company": "Kalpana's Cakes & Bakes",
+        "text": "Mahant Software delivered our website and digital card on time. Our clients love the 1-click WhatsApp order feature!",
+        "rating": 5
+      },
+      {
+        "author": "Rajesh Sharma",
+        "company": "Ambition Couriers",
+        "text": "Exceptional service and quick response. The digital card and quotation system saved our team hours every week.",
+        "rating": 5
+      },
+      {
+        "author": "Ankit Mehta",
+        "company": "Makrel Engineering",
+        "text": "Super professional team. Having a QR code digital card makes networking at expos and trade fairs effortless.",
+        "rating": 5
+      }
+    ]
+  }
+}
