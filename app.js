@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     phoneClean: "919004168049",
     email: "mahantsoftware@gmail.com",
     website: "http://mahantsoftware.com/",
-    cardUrl: window.location.href.split('?')[0].replace(/\/$/, '') || "http://mahantsoftware.com/",
+    cardUrl: window.location.hostname === 'card.mahantsoftware.com' ? window.location.href.split('?')[0] : "https://card.mahantsoftware.com/",
     address: "1006, 10th floor, DGS Sheetal Sahyog Building, Opp Laxman Nagar Police Station, Kurar village, Malad East, Mumbai - 400097",
     landmark: "St. Francis School Main Gate",
     location: "Malad East, Mumbai, Maharashtra, India",

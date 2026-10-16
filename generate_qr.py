@@ -2,7 +2,7 @@ import os
 import qrcode
 from PIL import Image
 
-def generate_card_qr(url="http://mahantsoftware.com/", output_path="assets/mahant_software_qr.png", logo_path="assets/logo.png"):
+def generate_card_qr(url="https://card.mahantsoftware.com/", output_path="assets/mahant_software_qr.png", logo_path="assets/logo.png"):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
     # Generate QR Code with high error correction for logo embedding
