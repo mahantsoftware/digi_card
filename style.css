@@ -313,6 +313,7 @@ body {
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
   transition: all 0.2s ease;
+  text-decoration: none;
 }
 
 .btn-primary-vcard:hover {
@@ -1024,6 +1025,7 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
   border: none;
+  text-decoration: none;
 }
 
 .bar-btn.secondary {

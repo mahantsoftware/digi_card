@@ -2,16 +2,21 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Current Profile Configuration
   const profile = {
-    name: "Mahant Software",
-    owner: "Business Development & Tech Solutions",
+    name: "Mahant Software - Yash Panchal",
+    company: "Mahant Software",
+    contactPerson: "Yash Panchal",
+    owner: "Yash Panchal (Founder & Tech Solutions)",
     tagline: "Custom Software, Mobile Apps & Digital Solutions",
     bio: "Mahant Software is a modern IT development studio specializing in high-performance web applications, mobile apps, digital business cards, and end-to-end automation for growing businesses.",
-    phone: "+91 90041 68049",
+    phone: "+91 9004168049",
+    phoneDisplay: "+91 90041 68049",
     phoneClean: "919004168049",
-    email: "contact@mahantsoftware.com",
-    website: "https://mahantsoftware.com",
-    cardUrl: window.location.href.split('?')[0].replace(/\/$/, '') || "https://card.mahantsoftware.com",
-    location: "Gujarat, India",
+    email: "mahantsoftware@gmail.com",
+    website: "http://mahantsoftware.com/",
+    cardUrl: window.location.href.split('?')[0].replace(/\/$/, '') || "http://mahantsoftware.com/",
+    address: "1006, 10th floor, DGS Sheetal Sahyog Building, Opp Laxman Nagar Police Station, Kurar village, Malad East, Mumbai - 400097",
+    landmark: "St. Francis School Main Gate",
+    location: "Malad East, Mumbai, Maharashtra, India",
     rating: 5.0,
     reviewCount: 48,
     services: [
@@ -167,40 +172,80 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   renderTestimonials();
 
-  // 5. Download VCF (vCard Contact Card)
-  function downloadVCard() {
+  // 5. Save to Phonebook (Direct 1-Click for iOS & Android)
+  async function saveContactToPhone(e) {
+    if (e && e.preventDefault) e.preventDefault();
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    // Standard vCard 3.0 formatting strictly formatted for maximum mobile phonebook compatibility
     const vCardData = [
       'BEGIN:VCARD',
       'VERSION:3.0',
-      `FN:${profile.name}`,
-      `ORG:${profile.name}`,
-      `TITLE:${profile.owner}`,
-      `TEL;TYPE=WORK,VOICE:${profile.phone}`,
-      `TEL;TYPE=CELL,VOICE:${profile.phone}`,
-      `EMAIL;TYPE=WORK:${profile.email}`,
-      `URL;TYPE=WORK:${profile.website}`,
-      `ADR;TYPE=WORK:;;${profile.location};;;;`,
-      `NOTE:Smart Digital Business Card: ${profile.cardUrl}`,
+      'PRODID:-//Mahant Software//Digital Card//EN',
+      'N:;Mahant Software - Yash Panchal;;;',
+      'FN:Mahant Software - Yash Panchal',
+      'ORG:Mahant Software',
+      'TITLE:Founder & Lead Developer',
+      'TEL;TYPE=CELL,VOICE,PREF:+919004168049',
+      'TEL;TYPE=WORK,VOICE:+919004168049',
+      'EMAIL;TYPE=INTERNET,WORK,PREF:mahantsoftware@gmail.com',
+      'URL;TYPE=WORK:http://mahantsoftware.com/',
+      'ADR;TYPE=WORK,POSTAL,PARCEL:;;1006, 10th floor, DGS Sheetal Sahyog Building, Opp Laxman Nagar Police Station, Kurar village;Malad East, Mumbai;Maharashtra;400097;India',
+      'LABEL;TYPE=WORK:1006, 10th floor, DGS Sheetal Sahyog Building, Opp Laxman Nagar Police Station, Kurar village, Malad East, Mumbai - 400097. Landmark: St. Francis School Main Gate',
+      'NOTE:Mahant Software - Yash Panchal\\nPhone: +91 9004168049\\nEmail: mahantsoftware@gmail.com\\nWebsite: http://mahantsoftware.com/\\nAddress: 1006, 10th floor, DGS Sheetal Sahyog Building, Opp Laxman Nagar Police Station, Kurar village, Malad East, Mumbai - 400097\\nLandmark: St. Francis School Main Gate',
       'END:VCARD'
     ].join('\r\n');
 
-    const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
+    // Method 1: Web Share API (Primary for modern Android phones)
+    // Passes the .vcf file directly into native contacts/share picker without downloading to disk
+    try {
+      const vcfBlob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+      const vcfFile = new File([vcfBlob], 'Mahant_Software_Yash_Panchal.vcf', { type: 'text/vcard' });
+
+      if (!isIOS && navigator.canShare && navigator.canShare({ files: [vcfFile] })) {
+        await navigator.share({
+          files: [vcfFile],
+          title: 'Mahant Software - Yash Panchal',
+          text: 'Save Mahant Software - Yash Panchal to your contacts'
+        });
+        showToast('Tap Contacts to save directly to your phonebook!');
+        return;
+      }
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        // User dismissed the native dialog
+        return;
+      }
+      console.log('Web Share fallback:', err);
+    }
+
+    // Method 2: iOS Safari Direct Navigation
+    // Navigating directly to a .vcf file on iOS immediately opens the native Apple Contacts card sheet
+    if (isIOS) {
+      window.location.href = 'mahant_software.vcf';
+      showToast('Opening contact card... Tap "Save" in top-right.');
+      return;
+    }
+
+    // Method 3: Direct Download/Open Fallback (Desktop, older Android, or unsupported browsers)
+    const vcfBlob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+    const url = URL.createObjectURL(vcfBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', `${profile.name.replace(/\s+/g, '_')}_Contact.vcf`);
+    link.setAttribute('download', 'Mahant_Software_Yash_Panchal.vcf');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
 
-    showToast('Contact file downloaded! Tap to add to phonebook.');
+    showToast('Contact opened! Tap to save directly.');
   }
 
   const btnDownloadVcard = document.getElementById('btnDownloadVcard');
   const bottomSaveBtn = document.getElementById('bottomSaveBtn');
-  if (btnDownloadVcard) btnDownloadVcard.addEventListener('click', downloadVCard);
-  if (bottomSaveBtn) bottomSaveBtn.addEventListener('click', downloadVCard);
+  if (btnDownloadVcard) btnDownloadVcard.addEventListener('click', saveContactToPhone);
+  if (bottomSaveBtn) bottomSaveBtn.addEventListener('click', saveContactToPhone);
 
   // 6. Copy Card Link
   const btnCopyCardLink = document.getElementById('btnCopyCardLink');

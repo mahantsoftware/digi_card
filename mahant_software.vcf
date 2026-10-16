@@ -1,0 +1,15 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Mahant Software//Digital Card//EN
+FN:Mahant Software - Yash Panchal
+N:;Mahant Software - Yash Panchal;;;
+ORG:Mahant Software
+TITLE:Founder & Lead Developer
+TEL;TYPE=CELL,VOICE,PREF:+919004168049
+TEL;TYPE=WORK,VOICE:+919004168049
+EMAIL;TYPE=INTERNET,WORK,PREF:mahantsoftware@gmail.com
+URL;TYPE=WORK:http://mahantsoftware.com/
+ADR;TYPE=WORK,POSTAL,PARCEL:;;1006, 10th floor, DGS Sheetal Sahyog Building, Opp Laxman Nagar Police Station, Kurar village;Malad East, Mumbai;Maharashtra;400097;India
+LABEL;TYPE=WORK:1006, 10th floor, DGS Sheetal Sahyog Building, Opp Laxman Nagar Police Station, Kurar village, Malad East, Mumbai - 400097. Landmark: St. Francis School Main Gate
+NOTE:Mahant Software - Yash Panchal\nPhone: +91 9004168049\nEmail: mahantsoftware@gmail.com\nWebsite: http://mahantsoftware.com/\nAddress: 1006, 10th floor, DGS Sheetal Sahyog Building, Opp Laxman Nagar Police Station, Kurar village, Malad East, Mumbai - 400097\nLandmark: St. Francis School Main Gate
+END:VCARD
